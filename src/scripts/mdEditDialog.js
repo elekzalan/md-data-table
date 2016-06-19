@@ -315,7 +315,7 @@ function mdEditDialog($compile, $controller, $document, $mdUtil, $q, $rootScope,
             '<div ng-if="size === \'large\'" class="md-title">{{title || \'Edit\'}}</div>' +
             '<form name="editDialog" layout="column" ng-submit="submit(model)">' +
               '<md-input-container md-no-float>' +
-                '<input name="input" ng-model="model" md-autofocus placeholder="{{placeholder}} "' + getAttrs() + '>' +
+                '<input name="input" ng-model="model" md-autofocus aria-label="{{placeholder}} "' placeholder="{{placeholder}} "' + getAttrs() + '>' +
                 '<div ng-messages="editDialog.input.$error">' +
                   '<div ng-repeat="(key, message) in messages" ng-message="{{key}}">{{message}}</div>' +
                 '</div>' +
