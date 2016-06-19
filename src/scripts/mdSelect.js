@@ -98,14 +98,29 @@ function mdSelect($compile, $parse) {
     }
 
     function createCheckbox() {
-      var checkbox = angular.element('<md-checkbox>').attr({
-        'aria-label': 'Select Row',
-        'ng-click': '$mdSelect.toggle($event)',
-        'ng-checked': '$mdSelect.isSelected()',
-        'ng-disabled': '$mdSelect.disabled'
-      });
+      var checkbox = angular.element('<md-checkbox>');
+      
+      checkbox.attr('aria-label', 'Select Row');
+      checkbox.attr('ng-click', '$mdSelect.toggle($event)');
+      checkbox.attr('ng-checked', '$mdSelect.isSelected()');
+      checkbox.attr('ng-disabled', '$mdSelect.disabled');
 
-      return angular.element('<td class="md-cell md-checkbox-cell">').append($compile(checkbox)(scope));
+      var cell = angular.element('<td class="md-cell md-checkbox-cell">');
+
+      if (self.rowAvatar) {
+          var avatar = angular.element('<img class="md-avatar">');
+
+          avatar.attr('src', self.rowAvatar);
+          avatar.attr('width', '28px');
+          avatar.attr('height', '28px');
+          avatar.attr('alt', 'avatar-'+self.id);
+
+          element.addClass('md-row-avatar');
+
+          cell.append($compile(avatar)(scope));
+      }
+      
+      return cell.append($compile(checkbox)(scope));
     }
 
     function disableSelection() {
@@ -206,7 +221,8 @@ function mdSelect($compile, $parse) {
       disabled: '=ngDisabled',
       onSelect: '=?mdOnSelect',
       onDeselect: '=?mdOnDeselect',
-      autoSelect: '=mdAutoSelect'
+      autoSelect: '=mdAutoSelect',
+      rowAvatar: '=?mdRowAvatar'
     }
   };
 }
