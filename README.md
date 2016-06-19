@@ -438,6 +438,7 @@ ctrl.limitOptions = [5, 10, 15, {
 | `multiple`     | `mdTable` | `[expression]`    | Allow multiple selection. When enabled a master toggle will be prepended to the last row of table header. |
 | `ngDisabled`   | `mdRow`   | `expression`      | Conditionally disable row selection. |
 | `ngModel`      | `mdTable` | `array`           | A variable to bind selected items to. |
+| `mdRowAvatar`  | `mdRow`   | `string`          | Optionally add an avatar to each row. The avatar will show in place of the checkbox until hovering over the row. You should specify a fallback image for cases when the data field is null. |
 
 By default selected items will persist. Equality between items is determined using the `===` operator. In cases where items may not be strictly equal, you must provide a unique identifier for the item.
 
@@ -447,6 +448,12 @@ You may manually add or remove items from the model but be aware that select and
 
 ```html
 <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="dessert in desserts.data">
+```
+
+**Example: Adding an avatar.**
+
+```html
+<tr md-row md-select="dessert" md-select-id="{{dessert.name}}" md-row-avatar="dessert.picture || 'path/to/fallback/image.png'" md-auto-select ng-repeat="dessert in desserts.data">
 ```
 
 **Example: Clearing Selected Items On Pagination**
