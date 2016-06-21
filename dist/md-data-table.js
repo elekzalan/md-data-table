@@ -1277,7 +1277,7 @@ function mdTable() {
       }
     };
     
-    if($mdTable && $attrs.hasOwnProperty('mdProgress')) {
+    if($attrs.hasOwnProperty('mdProgress')) {
       $scope.$watch('$mdTable.progress', self.queuePromise);
     }
     
@@ -1440,8 +1440,10 @@ angular.module('md.data.table').directive('mdTableProgress', mdTableProgress);
 function mdTableProgress() {
 
   function postLink(scope, element, attrs, tableCtrl) {
-    scope.columnCount = tableCtrl.columnCount;
-    scope.deferred = tableCtrl.waitingOnPromise;
+    if(tableCtrl){
+      scope.columnCount = tableCtrl.columnCount;
+      scope.deferred = tableCtrl.waitingOnPromise;
+    }
   }
 
   return {

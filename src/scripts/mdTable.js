@@ -155,7 +155,7 @@ function mdTable() {
       }
     };
     
-    if($mdTable && $attrs.hasOwnProperty('mdProgress')) {
+    if($attrs.hasOwnProperty('mdProgress')) {
       $scope.$watch('$mdTable.progress', self.queuePromise);
     }
     
