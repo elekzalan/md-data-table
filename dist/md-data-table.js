@@ -1277,7 +1277,7 @@ function mdTable() {
       }
     };
     
-    if($attrs.hasOwnProperty('mdProgress')) {
+    if($mdTable && $attrs.hasOwnProperty('mdProgress')) {
       $scope.$watch('$mdTable.progress', self.queuePromise);
     }
     
@@ -1446,7 +1446,7 @@ function mdTableProgress() {
 
   return {
     link: postLink,
-    require: '^^mdTable',
+    require: '^?mdTable',
     restrict: 'C',
     scope: {},
     templateUrl: 'md-table-progress.html'

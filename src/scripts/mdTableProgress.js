@@ -11,7 +11,7 @@ function mdTableProgress() {
 
   return {
     link: postLink,
-    require: '^^mdTable',
+    require: '^?mdTable',
     restrict: 'C',
     scope: {},
     templateUrl: 'md-table-progress.html'
